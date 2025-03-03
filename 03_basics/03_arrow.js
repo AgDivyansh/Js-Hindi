@@ -23,7 +23,11 @@ user.welcomemmessage();
 const test = () => {
     console.log(`this is sample arrow function`);
     console.log(this);
-    
-    
 }
 test() ;
+
+
+const chai = () => ("this is a called implicit return we don't need to use return keyword") ;
+
+console.log(chai());
+
