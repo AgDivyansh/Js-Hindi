@@ -5,4 +5,11 @@
 (function redy() {
     console.log('get redy for the race');
     
-}) ()
+}) () ;
+
+// and remember to use ; at the end of the iife to end the iife 
+
+( () => {
+    return console.log(`start your bike `);
+    
+} ) ()
