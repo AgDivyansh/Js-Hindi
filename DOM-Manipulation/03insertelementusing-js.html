@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insert element using js</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <script>
+      const div = document.createElement("div");
+      console.log(div);
+      div.className = "main";
+      div.id = Math.round(Math.random() * 10 + 1);
+      div.setAttribute("title", "generated title");
+
+      // first it will fetch the text node present in the div then it will over wright it with the new text
+      const addTest = document.createTextNode("This is a generated div");
+      div.innerText = "This is a generated div";
+      // document.body.appendChild(div);
+      div.appendChild(addTest);
+      document.appendChild(div);
+    </script>
+  </body>
+</html>
