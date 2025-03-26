@@ -12,3 +12,11 @@ button.forEach((btn) => {
         body.style.backgroundColor = e.target.id;
     })
 })
+
+
+
+// document.querySelectorAll('.button').forEach((btn) => {
+//     btn.addEventListener('click', (e) => {
+//         document.body.style.backgroundColor = e.target.id;
+//     })
+// })
