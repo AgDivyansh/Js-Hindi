@@ -1,7 +1,7 @@
 let randomNumber = parseInt(Math.random() * 10 + 1);
 console.log(`random number is ${randomNumber}`);
 
-const userInput = document.querySelector('#guessField')
+let userInput = document.querySelector('#guessField')
 const submit = document.querySelector('#subt')
 let quessSlot = document.querySelector('.guesses');
 const remaining = document.querySelector('.lastResult');
