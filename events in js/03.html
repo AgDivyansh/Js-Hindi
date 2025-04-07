@@ -39,49 +39,42 @@
     })
 
   </script> -->
-<script>
+  <script>
+    const start = document.querySelector("#start");
+    const stop = document.querySelector("#stop");
+    const getRandomNumber = () => {
+      return Math.floor(Math.random() * 16);
+    };
+    const getRandomColor = () => {
+      const str = "0123456789ABCDEF";
+      let rand = "#";
+      for (let i = 0; i < 6; i++) {
+        rand += str[getRandomNumber()];
+      }
+      return rand;
+    };
+    // console.log(` random color generated is : ${getRandomColor()}`);
+    // ( ;)
+    let startInterval = null;
+    start.addEventListener("click", () => {
+      console.log(`start button was clicked`);
 
-const start = document.querySelector('#start') ;
-const stop = document.querySelector('#stop') ;
-  const getRandomNumber = () => {
-    return Math.floor(Math.random() * 16)
-  }
-  const getRandomColor = () => 
-{
-    const str = "0123456789ABCDEF" ;
-    let rand = '#';
-    for (let i = 0 ; i < 6 ; i++)
-    {
-      rand += str[getRandomNumber()]
-    }
-    return rand ;
-}
-// console.log(` random color generated is : ${getRandomColor()}`);
-// ( ;)
-let startInterval = null ;
-start.addEventListener('click', () => {
-  console.log(`start button was clicked`);
-  
-  if (!startInterval)
-{
-  startInterval = setInterval(() => {
-    document.body.style.backgroundColor = getRandomColor() ;
-  }, 1000);
-}
-})
+      if (!startInterval) {
+        startInterval = setInterval(() => {
+          document.body.style.backgroundColor = getRandomColor();
+        }, 1000);
+      }
+    });
 
-stop.addEventListener('click', () => {
-  if (startInterval)
-{
-  clearInterval(startInterval) ;
-  startInterval = null ;
-}
-else
-{
-  console.log(`first you have to click the start button to start changing the background of the web page `);
-  
-}
-})
-</script>
-
-  </html>
+    stop.addEventListener("click", () => {
+      if (startInterval) {
+        clearInterval(startInterval);
+        startInterval = null;
+      } else {
+        console.log(
+          `first you have to click the start button to start changing the background of the web page `
+        );
+      }
+    });
+  </script>
+</html>
