@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApiRequest</title>
+</head>
+<body style="background-color: #575757; color : white">
+    <!-- call places at different states  -->
+     <!-- open :- but not called  -->
+      <!-- headers_received :- send() has been called and headers and status are available -->
+       <!-- loading :- downloading holds partial data  -->
+        <!-- done :- the operation is done  -->
+         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta saepe accusamus repellat modi voluptatem sed ipsa dicta totam. Cumque, porro optio. Beatae earum veniam perspiciatis quo voluptas rerum repellendus exercitationem.
+
+        <div
+            style="max-width: 400px; border: 1px solid #e1e4e8; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); font-family: sans-serif; display: flex; gap: 15px;">
+            <img src="https://avatars.githubusercontent.com/u/11613311?v=4" alt="Profile Picture"
+                style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+            <div>
+                <h2 style="margin: 0; font-size: 1.2rem;">Hitesh </h2>
+                <p style="margin: 5px 0; color: #555;">@hiteshchoudhary</p>
+                <p style="font-size: 0.9rem; color: #333;">🧠 CTO at iNeuron | Educator | Content Creator | Builder</p>
+                <p style="margin: 8px 0 0; font-size: 0.9rem;"> <strong>5800</strong> Followers • <strong>96</strong> Repos </p>
+            </div>
+        </div>
+
+
+         <div class="main-container">
+            <button id="details">Get User details</button>
+         </div>
+</body>
+<script>
+    const requestUrl = "https://api.github.com/users/hiteshchoudhary" ;
+    const xhr = new XMLHttpRequest() ;
+    // console.log(` first : ${xhr.readyState}`);
+    xhr.open('GET', requestUrl) ;
+    
+    // const data ;
+    let data ;
+    xhr.onreadystatechange =function () {
+        console.log(`it was printed only on the state change : ${xhr.readyState}`);
+        if (xhr.readyState === 4) {
+            console.log(`reached at last state :`);
+            // console.log(this.responseText);
+             data = JSON.parse(this.responseText) ;
+            console.log(`date of the user is : ${data.followers}`);
+            
+            
+            // console.log(`reached at last state`);
+            
+        }
+    }
+    xhr.send() ;
+
+    const details = document.getElementById('details') ;
+    // console.log(`${details}`);
+    console.log(details);
+    details.addEventListener('click', () => {
+        // details.innerHTML = 'fetching detils of the user'
+        details.innerHTML = `
+        <div
+            style="max-width: 400px; border: 1px solid #e1e4e8; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); font-family: sans-serif; display: flex; gap: 15px;">
+            <img src="${data.avatar_url}" alt="Profile Picture"
+                style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+            <div>
+                <h2 style="margin: 0; font-size: 1.2rem;">${data.name} </h2>
+                <p style="margin: 5px 0; color: #555;">Bio : ${data.bio}</p>
+                <p style="margin: 8px 0 0; font-size: 0.9rem;"> <strong>${data.followers}</strong> Followers • <strong></strong> Public repos:  ${data.public_repos} </p>
+            </div>
+        </div>
+        `
+    })
+    
+    
+</script>
+</html>
